@@ -66,7 +66,6 @@ GameStarter.__initKeys = function(canvas) {
 };
 
 GameStarter.__nextGameStep = function() {
-    //console.log(Math.random());
     GameStarter.__stepProcessor.nextStep(GameStarter.__KEY_STATE);
     GameStarter.__gamePanel.redraw();
     setTimeout(() => GameStarter.__nextGameStep(), 50);

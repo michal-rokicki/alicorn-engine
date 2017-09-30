@@ -8,10 +8,12 @@ StepProcessor.prototype.nextStep = function(keyState) {
 
     if (keyState.left) {
         mainCharacter.x -= 0.1;
+        this.__world.vision = "LEFT";
     }
 
     if (keyState.right) {
         mainCharacter.x += 0.1;
+        this.__world.vision = "RIGHT";
     }
 
     if (keyState.forced.up) {
