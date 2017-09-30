@@ -14,6 +14,10 @@ StepProcessor.prototype.nextStep = function(keyState) {
         mainCharacter.x += 0.1;
     }
 
+    if (keyState.forced.up) {
+        mainCharacter.vy -= this.__world.jumpVy;
+    }
+
     this.__handleCharacter(mainCharacter);
 }
 
@@ -22,12 +26,11 @@ StepProcessor.prototype.__handleCharacter = function(character) {
     character.vy = Math.max(-this.__world.maxVY, character.vy);
     character.vy = Math.min(this.__world.maxVY, character.vy);
 
-    console.log(character.y);
-
     character.y += character.vy;
 
     if (this.__isDownCollision(character)) {
         character.y = Math.floor(character.y);
+        character.vy = 0;
     }
 };
 
