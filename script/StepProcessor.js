@@ -42,18 +42,15 @@ StepProcessor.prototype.__handleCharacter = function(character) {
 StepProcessor.prototype.__repairLocation = function(character) {
     var map = this.__world.map;
 
-    //console.log(character);
-
     character.x = Math.max(0, character.x);
     character.x = Math.min(map.width - character.width, character.x);
 
-    character.y = Math.max(0, character.y);
+    if (character.y<0) {
+        character.y = 0;
+        character.vy = 0;
+    }
+
     character.y = Math.min(map.height - character.height, character.y);
-
-    //character.y = Math.max(0, character.y);
-    //character.y = Math.min(map.height, character.y+character.height);
-
-    //console.log(character);
 }
 
 StepProcessor.prototype.__isDownCollision = function(character) {
