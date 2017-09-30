@@ -12,4 +12,12 @@ StepProcessor.prototype.nextStep = function(keyState) {
     if (keyState.right) {
         mainCharacter.x += 0.1;
     }
+
+    mainCharacter.vy -= this.__world.g;
+    mainCharacter.vy = Math.max(-this.__world.maxVY, mainCharacter.vy);
+    mainCharacter.vy = Math.min(this.__world.maxVY, mainCharacter.vy);
+
+    mainCharacter.y += mainCharacter.vy;
+
+    
 }

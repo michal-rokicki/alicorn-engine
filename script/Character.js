@@ -4,5 +4,6 @@ function Character(type, x, y, width, height) {
     this.y = y;
     this.width = width;
     this.height = height;
+    this.vy = 0;
 }
 
