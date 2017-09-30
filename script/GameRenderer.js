@@ -23,18 +23,9 @@ GameRenderer.prototype.__renderBlocks = function(worldMap, view, context) {
     var j0 = Math.max(0, Math.floor(view.y/GameRenderer.__BLOCK_SIZE));
     var j1 = Math.min(worldMap.height, Math.floor((view.y+view.height)/GameRenderer.__BLOCK_SIZE));
 
-    console.log(i0);
-    console.log(i1);
-    console.log(j0);
-    console.log(j1);
-
-    console.log(worldMap);
-
     for (i=i0; i<i1; ++i) {
         for (j=j0; j<j1; ++j) {
             var blockId = worldMap.blocks[i][j];
-               console.log(i+" "+j);
-
             if (blockId!=" ") {
                 x = i*GameRenderer.__BLOCK_SIZE - view.x;
                 y = j*GameRenderer.__BLOCK_SIZE - view.y;
@@ -43,10 +34,4 @@ GameRenderer.prototype.__renderBlocks = function(worldMap, view, context) {
             }
         }
     }
-
-    /*for (y=view.y; y<view.y+view.height; ++y) {
-        for (x=view.x; x<view.x+view.width; ++x) {
-
-        }
-    }*/
 };
