@@ -37,6 +37,11 @@ StepProcessor.prototype.__handleCharacter = function(character) {
         character.vy = 0;
     }
 
+    /*if (this.__isHorizontalCollision(character, character.x)) {
+        //character.x = Math.floor(character.x);
+    }*/
+
+
 };
 
 StepProcessor.prototype.__repairLocation = function(character) {
@@ -50,14 +55,32 @@ StepProcessor.prototype.__repairLocation = function(character) {
         character.vy = 0;
     }
 
-    character.y = Math.min(map.height - character.height, character.y);
-}
+    //character.y = Math.min(map.height - character.height, character.y);
+};
 
 StepProcessor.prototype.__isDownCollision = function(character) {
     var x,y, type;
     for (var i=0; i<=character.width; ++i) {
         x = Math.floor(character.x + i);
         y = Math.floor(character.y);
+        type = this.__world.map.blocks[x][y];
+
+        if (this.__blockConfig.blocks[type]=="SOLID") {
+            return true;
+        }
+    }
+
+    return false;
+};
+
+StepProcessor.prototype.__isHorizontalCollision = function(character, x) {
+    var y, type;
+    x = Math.floor(x);
+    for (var i=0; i<=character.height; ++i) {
+        y = Math.floor(character.y + i);
+
+        console.log(x+" "+y);
+
         type = this.__world.map.blocks[x][y];
 
         if (this.__blockConfig.blocks[type]=="SOLID") {
