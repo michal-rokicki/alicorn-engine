@@ -8,7 +8,7 @@ function GamePanel(canvas, world) {
 GamePanel.prototype.redraw = function() {
     var ctx = this.__canvas[0].getContext("2d");
 
-    this.__view.center(this.__word.mainCharacter.x*64,this.__word.mainCharacter.y*64);
+    this.__view.center(this.__word.mainCharacter.x*64,(this.__word.mainCharacter.y-2)*64);
 
     this.__renderer.render(this.__word, this.__view, ctx);
 };

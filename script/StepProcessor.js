@@ -7,12 +7,12 @@ StepProcessor.prototype.nextStep = function(keyState) {
     var mainCharacter = this.__world.mainCharacter;
 
     if (keyState.left) {
-        mainCharacter.x -= 0.1;
+        mainCharacter.x -= 0.25;
         this.__world.vision = "LEFT";
     }
 
     if (keyState.right) {
-        mainCharacter.x += 0.1;
+        mainCharacter.x += 0.25;
         this.__world.vision = "RIGHT";
     }
 
@@ -24,6 +24,8 @@ StepProcessor.prototype.nextStep = function(keyState) {
 }
 
 StepProcessor.prototype.__handleCharacter = function(character) {
+    this.__repairLocation(character);
+
     character.vy += this.__world.g;
     character.vy = Math.max(-this.__world.maxVY, character.vy);
     character.vy = Math.min(this.__world.maxVY, character.vy);
@@ -34,7 +36,25 @@ StepProcessor.prototype.__handleCharacter = function(character) {
         character.y = Math.floor(character.y);
         character.vy = 0;
     }
+
 };
+
+StepProcessor.prototype.__repairLocation = function(character) {
+    var map = this.__world.map;
+
+    //console.log(character);
+
+    character.x = Math.max(0, character.x);
+    character.x = Math.min(map.width - character.width, character.x);
+
+    character.y = Math.max(0, character.y);
+    character.y = Math.min(map.height - character.height, character.y);
+
+    //character.y = Math.max(0, character.y);
+    //character.y = Math.min(map.height, character.y+character.height);
+
+    //console.log(character);
+}
 
 StepProcessor.prototype.__isDownCollision = function(character) {
     var x,y, type;
