@@ -28,12 +28,19 @@ GameRenderer.prototype.__renderBlocks = function(worldMap, view, context) {
     console.log(j0);
     console.log(j1);
 
-    for (i=i0; i<i1; ++i) {
-        for (j=j0; i<j1; ++j) {
-            x = i*GameRenderer.__BLOCK_SIZE - view.x;
-            y = j*GameRenderer.__BLOCK_SIZE - view.y;
+    console.log(worldMap);
 
-            context.drawImage(this.__sprites.blocks[worldMap.blocks[i][j]], x, y);
+    for (i=i0; i<i1; ++i) {
+        for (j=j0; j<j1; ++j) {
+            var blockId = worldMap.blocks[i][j];
+               console.log(i+" "+j);
+
+            if (blockId!=" ") {
+                x = i*GameRenderer.__BLOCK_SIZE - view.x;
+                y = j*GameRenderer.__BLOCK_SIZE - view.y;
+
+                context.drawImage(this.__sprites.blocks[blockId], x, y);
+            }
         }
     }
 
