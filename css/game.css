@@ -1,0 +1,9 @@
+div.hiddenImageHolder {
+    position:absolute;
+    z-index: 0;
+}
+
+div.hiddenImageHolder img {
+    width:0px;
+    height:0px
+}
