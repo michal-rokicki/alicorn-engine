@@ -31,7 +31,11 @@
             "1111111111             1                                "
         ];
 
+        var conf = {
+            g: 1
+        }
 
+        GameStarter.setWorld(new World(new WorldMap(), conf));
     </script>
 </head>
 <body onload="GameStarter.onLoad('gameCanvas')" style="background-color:red;">
