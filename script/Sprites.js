@@ -4,6 +4,10 @@ function Sprites() {
     };
 
     this.characters = {
-        "main": document.getElementById("character-main-img")
+        "main": {
+            dx: 68,
+            dy: 194,
+            img: document.getElementById("character-main-img")
+        }
     };
 }

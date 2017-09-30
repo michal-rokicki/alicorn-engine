@@ -4,9 +4,11 @@ function GameRenderer(sprites) {
 
 GameRenderer.__BLOCK_SIZE = 64;
 
-GameRenderer.prototype.render = function(worldMap, view, context) {
+GameRenderer.prototype.render = function(world, view, context) {
+    var worldMap = world.map;
     this.__renderBg(view, context);
     this.__renderBlocks(worldMap, view, context);
+    this.__renderCharacter(world.mainCharacter, view, context);
 };
 
 GameRenderer.prototype.__renderBg = function(view, context) {
@@ -34,4 +36,12 @@ GameRenderer.prototype.__renderBlocks = function(worldMap, view, context) {
             }
         }
     }
+};
+
+GameRenderer.prototype.__renderCharacter = function(character, view, context) {
+    var sprite = this.__sprites.characters[character.type];
+    context.drawImage(
+        sprite.img,
+        character.x*GameRenderer.__BLOCK_SIZE - view.x - sprite.dx,
+        character.y*GameRenderer.__BLOCK_SIZE - view.y - sprite.dy);
 };
