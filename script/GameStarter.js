@@ -12,7 +12,7 @@ GameStarter.onLoad = function(canvasId) {
     var sprites = new Sprites();
     var renderer = new GameRenderer(sprites);
 
-    var ctx = this.__canvas.getContext("2d");
+    var ctx = canvas[0].getContext("2d");
     renderer.render(GameStarter.__word.map, view, ctx);
 
     alert('AAAAAAAA');
