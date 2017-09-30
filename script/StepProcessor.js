@@ -14,18 +14,22 @@ StepProcessor.prototype.nextStep = function(keyState) {
         mainCharacter.x += 0.1;
     }
 
-    mainCharacter.vy += this.__world.g;
-    mainCharacter.vy = Math.max(-this.__world.maxVY, mainCharacter.vy);
-    mainCharacter.vy = Math.min(this.__world.maxVY, mainCharacter.vy);
-
-    console.log(mainCharacter.y);
-
-    mainCharacter.y += mainCharacter.vy;
-
-    if (this.__isDownCollision(mainCharacter)) {
-        mainCharacter.y = Math.floor(mainCharacter.y);
-    }
+    this.__handleCharacter(mainCharacter);
 }
+
+StepProcessor.prototype.__handleCharacter = function(character) {
+    character.vy += this.__world.g;
+    character.vy = Math.max(-this.__world.maxVY, character.vy);
+    character.vy = Math.min(this.__world.maxVY, character.vy);
+
+    console.log(character.y);
+
+    character.y += character.vy;
+
+    if (this.__isDownCollision(character)) {
+        character.y = Math.floor(character.y);
+    }
+};
 
 StepProcessor.prototype.__isDownCollision = function(character) {
     var x,y, type;
@@ -40,4 +44,4 @@ StepProcessor.prototype.__isDownCollision = function(character) {
     }
 
     return false;
-}
+};

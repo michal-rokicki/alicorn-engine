@@ -5,7 +5,8 @@ GameStarter.__KEY_STATE = {
     left:false,
     right:false,
     up:false,
-    down:false
+    down:false,
+    forced: {}
 };
 
 GameStarter.setWorld = function(word) {
@@ -28,15 +29,19 @@ GameStarter.__initKeys = function(canvas) {
             switch (event.which) {
                 case 38:
                     GameStarter.__KEY_STATE.up = true;
+                    GameStarter.__KEY_STATE.forced.up = true;
                     break;
                 case 40:
                     GameStarter.__KEY_STATE.down = true;
+                    GameStarter.__KEY_STATE.forced.down = true;
                     break;
                 case 37:
                     GameStarter.__KEY_STATE.left = true;
+                    GameStarter.__KEY_STATE.forced.left = true;
                     break;
                 case 39:
                     GameStarter.__KEY_STATE.right = true;
+                    GameStarter.__KEY_STATE.forced.right = true;
                     break;
             }
     });
@@ -65,4 +70,5 @@ GameStarter.__nextGameStep = function() {
     GameStarter.__stepProcessor.nextStep(GameStarter.__KEY_STATE);
     GameStarter.__gamePanel.redraw();
     setTimeout(() => GameStarter.__nextGameStep(), 50);
+    GameStarter.__KEY_STATE.forced = {};
 };
