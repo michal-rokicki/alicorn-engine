@@ -6,8 +6,8 @@ function Sprites() {
 
     this.characters = {
         "main": {
-            dx: 68,
-            dy: 194,
+            dx: 95,
+            dy: 186,
             img: document.getElementById("character-main-img")
         }
     };
