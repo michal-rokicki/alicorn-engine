@@ -1,7 +1,9 @@
 function Sprites() {
     this.blocks = {
         "1": document.getElementById("block-1-img"),
-        "2": document.getElementById("block-2-img")
+        "2": document.getElementById("block-2-img"),
+        "3": document.getElementById("block-3-img"),
+        "a": document.getElementById("block-a-img")
     };
 
     this.characters = {
