@@ -32,6 +32,10 @@ GameRenderer.prototype.__renderBlocks = function(worldMap, view, context) {
                 x = i*GameRenderer.__BLOCK_SIZE - view.x;
                 y = j*GameRenderer.__BLOCK_SIZE - view.y;
 
+                if (!this.__sprites.blocks[blockId]) {
+                    throw new Error("Unknown block: "+blockId);
+                }
+
                 context.drawImage(this.__sprites.blocks[blockId], x, y);
             }
         }
