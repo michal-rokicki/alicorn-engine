@@ -4,6 +4,7 @@ function BlockConfig() {
         "1": "SOLID",
         "2": "SOLID",
         "3": "SOLID",
-        "a": "SOLID"
+        "a": "SOLID",
+        "X": "SOLID"
     }
 }
