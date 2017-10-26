@@ -27,18 +27,22 @@ GameStarter.__initKeys = function(canvas) {
     $("body").keydown(
         function( event ) {
             switch (event.which) {
+                case 87:
                 case 38:
                     GameStarter.__KEY_STATE.up = true;
                     GameStarter.__KEY_STATE.forced.up = true;
                     break;
+                case 83:
                 case 40:
                     GameStarter.__KEY_STATE.down = true;
                     GameStarter.__KEY_STATE.forced.down = true;
                     break;
+                case 65:
                 case 37:
                     GameStarter.__KEY_STATE.left = true;
                     GameStarter.__KEY_STATE.forced.left = true;
                     break;
+                case 68:
                 case 39:
                     GameStarter.__KEY_STATE.right = true;
                     GameStarter.__KEY_STATE.forced.right = true;
@@ -47,27 +51,48 @@ GameStarter.__initKeys = function(canvas) {
     });
 
     $("body").keyup(
-            function( event ) {
-                switch (event.which) {
-                    case 38:
-                        GameStarter.__KEY_STATE.up = false;
-                        break;
-                    case 40:
-                        GameStarter.__KEY_STATE.down = false;
-                        break;
-                    case 37:
-                        GameStarter.__KEY_STATE.left = false;
-                        break;
-                    case 39:
-                        GameStarter.__KEY_STATE.right = false;
-                        break;
-                }
+        function( event ) {
+            switch (event.which) {
+                case 87:
+                case 38:
+                    GameStarter.__KEY_STATE.up = false;
+                    break;
+                case 83:
+                case 40:
+                    GameStarter.__KEY_STATE.down = false;
+                    break;
+                case 65:
+                case 37:
+                    GameStarter.__KEY_STATE.left = false;
+                    break;
+                case 68:
+                case 39:
+                    GameStarter.__KEY_STATE.right = false;
+                    break;
+            }
     });
 };
 
 GameStarter.__nextGameStep = function() {
-    GameStarter.__stepProcessor.nextStep(GameStarter.__KEY_STATE);
+    var gameOver = false;
+
+    try {
+        GameStarter.__stepProcessor.nextStep(GameStarter.__KEY_STATE);
+    }
+    catch (err) {
+        if (err==="Game Over!") {
+            gameOver = true;
+            $("#GameOverDiv").show();
+        }
+        else {
+            console.log(err);
+        }
+    }
+
     GameStarter.__gamePanel.redraw();
-    setTimeout(() => GameStarter.__nextGameStep(), 50);
     GameStarter.__KEY_STATE.forced = {};
+
+    if (!gameOver) {
+        setTimeout(() => GameStarter.__nextGameStep(), 50);
+    }
 };

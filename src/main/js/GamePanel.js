@@ -1,8 +1,8 @@
 function GamePanel(canvas, world) {
     this.__word = world;
     this.__canvas = canvas;
-    this.__view = new GameView(0, 0, canvas.width(), canvas.height())
-    this.__renderer = new GameRenderer(new Sprites());
+    this.__view = new GameView(0, 0, canvas.width(), canvas.height(), world.map.width*64, world.map.height*64);
+    this.__renderer = new GameRenderer();
 }
 
 GamePanel.prototype.redraw = function() {

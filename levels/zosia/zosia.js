@@ -14,10 +14,10 @@ var map = [
     "1                                                      11",
     "1        X                     a                       11",
     "1                   12222222111111111                  11",
-    "1                                                      11",
-    "1                                                      11",
-    "1                      a                               11",
-    "1                      XXXXXXXXXXXXXXXXXXX             11",
+    "1     aaa                                              11",
+    "1     aaa                                              11",
+    "1     aaa              a                               11",
+    "1     aaa              XXXXXXXXXXXXXXXXXXX             11",
     "1  X11X111X11                                          11",
     "1                                                      11",
     "1                  X111111X                            11",
@@ -39,7 +39,12 @@ var conf = {
     g: 0.05,
     maxVY: 0.5,
     jumpVy: 0.5,
-    mainCharacter: new Character("main", 3, 23, 2, 3)
-}
+    mainCharacter: new Character("main", 3, 23, 2, 3, 95, 186),
+    blocks: {
+        "a": "COIN",
+        "2": "KILLING",
+        "3": "KILLING"
+    }
+};
 
 GameStarter.setWorld(new World(new WorldMap(map), conf));

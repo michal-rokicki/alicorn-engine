@@ -5,4 +5,5 @@ function World(map, conf) {
     this.jumpVy = conf.jumpVy;
     this.mainCharacter = conf.mainCharacter;
     this.vision = "LEFT";
+    this.conf = conf;
 }
